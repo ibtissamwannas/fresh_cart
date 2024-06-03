@@ -8,11 +8,13 @@ class PageViewItems extends StatelessWidget {
     required this.backgroundImage,
     required this.subTitle,
     required this.title,
+    required this.isVisible,
   });
 
   final String image, backgroundImage;
   final String subTitle;
   final Widget title;
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +39,16 @@ class PageViewItems extends StatelessWidget {
                   image,
                 ),
               ),
-              Container(
-                margin: const EdgeInsetsDirectional.only(
-                  top: kToolbarHeight,
-                  start: 5,
-                ),
-                child: const Text(
-                  "تخط",
+              Visibility(
+                visible: isVisible,
+                child: Container(
+                  margin: const EdgeInsetsDirectional.only(
+                    top: kToolbarHeight,
+                    start: 10,
+                  ),
+                  child: const Text(
+                    "تخط",
+                  ),
                 ),
               ),
             ],
