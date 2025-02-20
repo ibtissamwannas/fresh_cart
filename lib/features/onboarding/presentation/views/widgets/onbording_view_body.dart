@@ -3,9 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fresh_cart/constants.dart';
+import 'package:fresh_cart/core/helper_function/spacing.dart';
+import 'package:fresh_cart/core/services/share_preferences_singleton.dart';
 import 'package:fresh_cart/core/utils/app_colors.dart';
 import 'package:fresh_cart/core/widgets/custom_button_widget.dart';
-import 'package:fresh_cart/features/onboarding/presentation/views/widgets/onboarding_pagae_view.dart';
+import 'package:fresh_cart/features/auth/presentation/view/login_view.dart';
+import 'package:fresh_cart/features/onboarding/presentation/views/widgets/onboarding_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -50,12 +53,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             activeColor: AppColors.primaryColor,
             color: currentPage == 1
                 ? AppColors.primaryColor
-                : AppColors.primaryColor.withOpacity(.5),
+                : AppColors.primaryColor.withValues(alpha: .5),
           ),
         ),
-        const SizedBox(
-          height: 29,
-        ),
+        verticalSpace(29),
         Visibility(
           visible: currentPage == 1 ? true : false,
           maintainSize: true,
@@ -66,14 +67,15 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               horizontal: kHorizontalPadding,
             ),
             child: CustomButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                Prefs.setBool(kIsOnBoardingViewed, true);
+                Navigator.pushReplacementNamed(context, LoginView.routeName);
+              },
               text: 'ابدأ الان',
             ),
           ),
         ),
-        const SizedBox(
-          height: 43,
-        ),
+        verticalSpace(43),
       ],
     );
   }

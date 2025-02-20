@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fresh_cart/core/helper_function/on_generate_routes.dart';
+import 'package:fresh_cart/core/services/share_preferences_singleton.dart';
 import 'package:fresh_cart/features/splash/presentation/views/splash_view.dart';
 import 'package:fresh_cart/generated/l10n.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Prefs.init();
   runApp(const MyApp());
 }
 
@@ -17,8 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        fontFamily: 'Cario',
       ),
       localizationsDelegates: const [
         S.delegate,
