@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "909103563376",
+    "project_id": "abiding-aspect-349313",
+    "storage_bucket": "abiding-aspect-349313.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909103563376:android:346601706b3c493ff12ab5",
+        "android_client_info": {
+          "package_name": "com.example.fresh_cart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiIi7jQq2zdeJ8tWpow38hZfqswl6sz2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
