@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_cart/core/services/get_it_service.dart';
 import 'package:fresh_cart/core/widgets/custom_app_bar.dart';
 import 'package:fresh_cart/features/auth/domain/repos/auth_repo.dart';
-import 'package:fresh_cart/features/auth/presentation/cubit/signup_cubit.dart';
+import 'package:fresh_cart/features/auth/presentation/cubit/signup_cubit/signup_cubit.dart';
 import 'package:fresh_cart/features/auth/presentation/view/widgets/signup_view_bloc_consumer.dart';
 
 class SignUpView extends StatelessWidget {

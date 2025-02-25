@@ -5,7 +5,11 @@ import 'package:fresh_cart/core/utils/app_text_styles.dart';
 import 'package:fresh_cart/features/auth/presentation/view/widgets/custom_checkbox.dart';
 
 class TermsAndConditions extends StatefulWidget {
-  const TermsAndConditions({super.key});
+  const TermsAndConditions({
+    super.key,
+    required this.onChecked,
+  });
+  final ValueChanged<bool> onChecked;
 
   @override
   State<TermsAndConditions> createState() => _TermsAndConditionsState();
@@ -20,6 +24,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
         CustomCheckbox(
           onChecked: (value) {
             isTermAccepted = value;
+            widget.onChecked(value);
             setState(() {});
           },
           isChecked: isTermAccepted,
