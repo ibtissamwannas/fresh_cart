@@ -4,18 +4,35 @@ import 'package:fresh_cart/features/auth/domain/repos/auth_repo.dart';
 
 part 'signin_state.dart';
 
-class SigninCubitCubit extends Cubit<SigninCubitState> {
-  SigninCubitCubit(this.authRepo) : super(SigninCubitInitial());
+class SigninCubit extends Cubit<SigninState> {
+  SigninCubit(this.authRepo) : super(SigninInitial());
 
   final AuthRepo authRepo;
 
   Future<void> loginWithEmailAndPassword(String email, String password) async {
-    emit(SigninCubitLoading());
+    emit(SigninLoading());
     final result = await authRepo.signinWithEmailAndPassword(email, password);
     result.fold(
-      (failure) => emit(SigninCubitFailure(failure.message)),
-      (userEntity) => emit(SigninCubitSuccess(userEntity)),
+      (failure) => emit(SigninFailure(failure.message)),
+      (userEntity) => emit(SigninSuccess(userEntity)),
     );
   }
 
+  Future<void> loginWithGoogle() async {
+    emit(SigninLoading());
+    final result = await authRepo.signinWithGoogle();
+    result.fold(
+      (failure) => emit(SigninFailure(failure.message)),
+      (userEntity) => emit(SigninSuccess(userEntity)),
+    );
+  }
+
+  Future<void> loginWithFacebook() async {
+    emit(SigninLoading());
+    final result = await authRepo.signinWithFacebook();
+    result.fold(
+      (failure) => emit(SigninFailure(failure.message)),
+      (userEntity) => emit(SigninSuccess(userEntity)),
+    );
+  }
 }
