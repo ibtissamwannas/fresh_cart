@@ -41,6 +41,8 @@ dependencies:
   modal_progress_hud_nsn: ^0.5.1
   google_sign_in: ^6.2.2
   flutter_facebook_auth: ^7.1.1
+  sign_in_with_apple: ^6.1.4
+  crypto: ^3.0.6
   flutter:
     sdk: flutter
   flutter_localizations:

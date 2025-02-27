@@ -80,14 +80,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   context.read<SigninCubit>().loginWithGoogle();
                 },
               ),
-              verticalSpace(16),
-              SocialLoginButton(
-                image: 'assets/icons/apple.svg',
-                title: 'تسجيل الدخول بحساب أبل',
-                onPressed: () {
-                  context.read<SigninCubit>().loginWithFacebook();
-                },
-              ),
+              // verticalSpace(16),
+              // SocialLoginButton(
+              //   image: 'assets/icons/apple.svg',
+              //   title: 'تسجيل الدخول بحساب أبل',
+              //   onPressed: () {
+              //     context.read<SigninCubit>().loginWithApple();
+              //   },
+              // ),
               verticalSpace(16),
               SocialLoginButton(
                 image: 'assets/icons/facebook.svg',

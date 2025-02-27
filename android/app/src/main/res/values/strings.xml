@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="facebook_app_id">654494370427166</string>
+<string name="fb_login_protocol_scheme">fb1234</string>
+<string name="facebook_client_token">5d72e6af3961989ce12dfbe68c399659</string>
+<string name="app_name">Fresh Cart</string>
+
+
+
+</resources>
