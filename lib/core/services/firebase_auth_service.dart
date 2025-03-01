@@ -11,6 +11,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class FirebaseAuthService {
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
+  Future<void> deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
@@ -69,7 +77,12 @@ class FirebaseAuthService {
   }
 
   Future<User> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+            scopes: ['email'],
+            clientId: Platform.isIOS
+                ? '909103563376-l8vdfi1d6hggkur94c9uobs6t5iobpo4.apps.googleusercontent.com'
+                : null)
+        .signIn();
 
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
