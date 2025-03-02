@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_cart/constants.dart';
-import 'package:fresh_cart/core/helper_function/build_error_snackbar.dart';
+import 'package:fresh_cart/core/helper_function/snackbars.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/utils/app_colors.dart';
 import 'package:fresh_cart/core/utils/app_text_styles.dart';
