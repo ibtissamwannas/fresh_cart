@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
-import 'package:fresh_cart/core/widgets/fruit_item.dart';
 import 'package:fresh_cart/core/widgets/search_text_field.dart';
 import 'package:fresh_cart/features/home/presentation/widget/best_selling_grid.dart';
 import 'package:fresh_cart/features/home/presentation/widget/best_selling_header.dart';
