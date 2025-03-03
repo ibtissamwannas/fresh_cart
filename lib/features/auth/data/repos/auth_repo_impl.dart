@@ -51,6 +51,8 @@ class AuthRepoImpl extends AuthRepo {
       user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
       var userEntity = await getUserData(uid: user.uid);
+      // save user data
+      
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
