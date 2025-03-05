@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fresh_cart/core/utils/app_colors.dart';
+import 'package:fresh_cart/core/helper_function/get_user.dart';
 import 'package:fresh_cart/core/utils/app_images.dart';
 import 'package:fresh_cart/core/utils/app_text_styles.dart';
 import 'package:fresh_cart/core/widgets/notification_widget.dart';
@@ -19,7 +18,7 @@ class CustomHomeAppBar extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        'أحمد مصطفي',
+        getUser().name,
         style: TextStyles.bold16,
       ),
       trailing: const NotificationWidget(),

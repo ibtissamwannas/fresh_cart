@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/utils/app_colors.dart';
 import 'package:fresh_cart/core/utils/app_images.dart';
