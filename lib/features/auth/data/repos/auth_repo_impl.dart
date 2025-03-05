@@ -1,11 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fresh_cart/constants.dart';
 import 'package:fresh_cart/core/errors/exceptions.dart';
 import 'package:fresh_cart/core/errors/failures.dart';
 import 'package:fresh_cart/core/services/data_service.dart';
 import 'package:fresh_cart/core/services/firebase_auth_service.dart';
+import 'package:fresh_cart/core/services/share_preferences_singleton.dart';
 import 'package:fresh_cart/core/utils/backend_end_points.dart';
 import 'package:fresh_cart/features/auth/data/models/user_model.dart';
 import 'package:fresh_cart/features/auth/domain/entities/user_entity.dart';
@@ -52,7 +55,7 @@ class AuthRepoImpl extends AuthRepo {
           email: email, password: password);
       var userEntity = await getUserData(uid: user.uid);
       // save user data
-      
+      saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
@@ -144,7 +147,7 @@ class AuthRepoImpl extends AuthRepo {
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
       path: BackendEndpoint.addUserData,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documentId: user.uId,
     );
   }
@@ -156,5 +159,11 @@ class AuthRepoImpl extends AuthRepo {
       docuementId: uid,
     );
     return UserModel.fromJson(userData);
+  }
+
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    await Prefs.setString(kUser, jsonData);
   }
 }
