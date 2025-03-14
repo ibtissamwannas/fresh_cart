@@ -6,7 +6,7 @@ import 'package:fresh_cart/core/repos/products_repo/product_repo.dart';
 import 'package:fresh_cart/core/services/data_service.dart';
 import 'package:fresh_cart/core/utils/backend_end_points.dart';
 
-class ProductsRepoImpl extends ProductsRepo {
+class ProductsRepoImpl implements ProductsRepo {
   final DatabaseService databaseService;
 
   ProductsRepoImpl(this.databaseService);

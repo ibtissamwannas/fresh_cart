@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:fresh_cart/core/entities/review_entity.dart';
 
-class ProductEntity extends Equatable {
+class ProductEntity extends Equatable { // data representation
   final String name;
   final String code;
   final String description;
