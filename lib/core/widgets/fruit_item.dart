@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_cart/core/entities/product_entity.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/utils/app_colors.dart';
 import 'package:fresh_cart/core/utils/app_images.dart';
 import 'package:fresh_cart/core/utils/app_text_styles.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productEntity});
+
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +31,11 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 verticalSpace(20),
-                Image.asset(Assets.imagesWatermelonTest),
+                Flexible(child: Image.network(productEntity.imageUrl ?? "")),
                 verticalSpace(24),
                 ListTile(
                   title: Text(
-                    'بطيخ',
+                    productEntity.name,
                     textAlign: TextAlign.right,
                     style: TextStyles.semiBold16,
                   ),
@@ -40,7 +43,7 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'جنية',
+                          text: productEntity.price.toString(),
                           style: TextStyles.bold13.copyWith(
                             color: AppColors.secondaryColor,
                           ),
@@ -58,7 +61,7 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'كيلو',
+                          text: productEntity.unitAmount.toString(),
                           style: TextStyles.semiBold13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),

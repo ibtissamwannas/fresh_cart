@@ -1,37 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_cart/core/helper_function/spacing.dart';
-import 'package:fresh_cart/core/widgets/search_text_field.dart';
-import 'package:fresh_cart/features/home/presentation/widget/best_selling_grid.dart';
-import 'package:fresh_cart/features/home/presentation/widget/best_selling_header.dart';
-import 'package:fresh_cart/features/home/presentation/widget/custom_home_app_bar.dart';
-import 'package:fresh_cart/features/home/presentation/widget/featured_list.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_cart/core/cubits/products_cubit.dart';
+import 'package:fresh_cart/core/repos/products_repo/product_repo.dart';
+import 'package:fresh_cart/core/services/get_it_service.dart';
+import 'package:fresh_cart/features/home/presentation/widget/home_view_inside_body.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                const CustomHomeAppBar(),
-                verticalSpace(16),
-                const SearchTextField(),
-                verticalSpace(12),
-                const FeaturedList(),
-                verticalSpace(12),
-                const BestSellingHeader(),
-                verticalSpace(8),
-              ],
-            ),
-          ),
-          const BestSellingGrid(),
-        ],
-      ),
+    return BlocProvider(
+      create: (context) => ProductsCubit(getIt.get<ProductsRepo>()),
+      child: const HomeViewInsideBody(),
     );
   }
 }
