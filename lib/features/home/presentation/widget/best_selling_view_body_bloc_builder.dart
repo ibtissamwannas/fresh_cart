@@ -6,8 +6,8 @@ import 'package:fresh_cart/core/widgets/custom_error_widget.dart';
 import 'package:fresh_cart/features/home/presentation/widget/best_selling_grid.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class BestSellingGridViewBlocBuilder extends StatelessWidget {
-  const BestSellingGridViewBlocBuilder({
+class ProductsGridViewBlocBuilder extends StatelessWidget {
+  const ProductsGridViewBlocBuilder({
     super.key,
   });
 

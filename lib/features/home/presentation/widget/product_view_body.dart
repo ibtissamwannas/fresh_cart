@@ -1,23 +1,21 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_cart/core/cubits/products_cubit.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
+import 'package:fresh_cart/core/widgets/custom_app_bar.dart';
 import 'package:fresh_cart/core/widgets/search_text_field.dart';
-import 'package:fresh_cart/features/home/presentation/widget/best_selling_header.dart';
 import 'package:fresh_cart/features/home/presentation/widget/best_selling_view_body_bloc_builder.dart';
 import 'package:fresh_cart/features/home/presentation/widget/custom_home_app_bar.dart';
-import 'package:fresh_cart/features/home/presentation/widget/featured_list.dart';
+import 'package:fresh_cart/features/home/presentation/widget/products_view_header.dart';
 
-class HomeViewInsideBody extends StatefulWidget {
-  const HomeViewInsideBody({
-    super.key,
-  });
+class ProductViewBody extends StatefulWidget {
+  const ProductViewBody({super.key});
 
   @override
-  State<HomeViewInsideBody> createState() => _HomeViewInsideBodyState();
+  State<ProductViewBody> createState() => _ProductViewBodyState();
 }
 
-class _HomeViewInsideBodyState extends State<HomeViewInsideBody> {
+class _ProductViewBodyState extends State<ProductViewBody> {
   @override
   void initState() {
     context.read<ProductsCubit>().getBestSellingroducts();
@@ -33,13 +31,16 @@ class _HomeViewInsideBodyState extends State<HomeViewInsideBody> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                const CustomHomeAppBar(),
-                verticalSpace(16),
+                const CustomAppBar(
+                  title: 'المنتجات',
+                  showBackbottom: false,
+                ),
+                verticalSpace(12),
                 const SearchTextField(),
                 verticalSpace(12),
-                const FeaturedList(),
-                verticalSpace(12),
-                const BestSellingHeader(),
+                ProductsViewHeader(
+                  length: context.read<ProductsCubit>().productsLength,
+                ),
                 verticalSpace(8),
               ],
             ),
