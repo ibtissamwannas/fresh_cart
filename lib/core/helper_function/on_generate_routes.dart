@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fresh_cart/features/auth/presentation/view/login_view.dart';
 import 'package:fresh_cart/features/auth/presentation/view/sign_up_view.dart';
 import 'package:fresh_cart/features/best_selling_fruits/presentation/pages/best_selling_view.dart';
+import 'package:fresh_cart/features/home/presentation/pages/cart_view.dart';
 import 'package:fresh_cart/features/home/presentation/pages/home_view.dart';
+import 'package:fresh_cart/features/home/presentation/pages/products_view.dart';
 import 'package:fresh_cart/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fresh_cart/features/splash/presentation/views/splash_view.dart';
 
@@ -16,10 +18,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginView());
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (context) => const SignUpView());
-    case HomeView.routeName:
-      return MaterialPageRoute(builder: (context) => const HomeView());
+    case MainView.routeName:
+      return MaterialPageRoute(builder: (context) => const MainView());
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (context) => const BestSellingView());
+    case ProductsView.routeName:
+      return MaterialPageRoute(builder: (context) => const ProductsView());
+    case CartView.routeName:
+      return MaterialPageRoute(builder: (context) => const CartView());
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }

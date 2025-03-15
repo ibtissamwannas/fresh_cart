@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fresh_cart/core/entities/product_entity.dart';
 
 ProductEntity getDummyProduct() {

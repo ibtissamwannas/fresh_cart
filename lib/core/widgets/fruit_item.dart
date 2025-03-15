@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fresh_cart/core/entities/product_entity.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/utils/app_colors.dart';
-import 'package:fresh_cart/core/utils/app_images.dart';
 import 'package:fresh_cart/core/utils/app_text_styles.dart';
 
 class FruitItem extends StatelessWidget {
@@ -31,7 +30,16 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 verticalSpace(20),
-                Flexible(child: Image.network(productEntity.imageUrl ?? "")),
+                productEntity.imageUrl != null
+                    ? Flexible(
+                        child: Image.network(
+                          productEntity.imageUrl!,
+                        ),
+                      )
+                    : const SizedBox(
+                        height: 100,
+                        width: double.infinity,
+                      ),
                 verticalSpace(24),
                 ListTile(
                   title: Text(
