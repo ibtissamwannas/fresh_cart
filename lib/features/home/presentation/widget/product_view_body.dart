@@ -5,7 +5,6 @@ import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/widgets/custom_app_bar.dart';
 import 'package:fresh_cart/core/widgets/search_text_field.dart';
 import 'package:fresh_cart/features/home/presentation/widget/best_selling_view_body_bloc_builder.dart';
-import 'package:fresh_cart/features/home/presentation/widget/custom_home_app_bar.dart';
 import 'package:fresh_cart/features/home/presentation/widget/products_view_header.dart';
 
 class ProductViewBody extends StatefulWidget {

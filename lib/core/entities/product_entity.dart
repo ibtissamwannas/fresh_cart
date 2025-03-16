@@ -14,7 +14,7 @@ class ProductEntity extends Equatable { // data representation
   final int numberOfCalories;
   final num avgRating = 0;
   final num ratingCount = 0;
-  final int unitAmount;
+  final int unitAmount; // km kelo
   final List<ReviewEntity> reviews;
   ProductEntity(
       {required this.name,
