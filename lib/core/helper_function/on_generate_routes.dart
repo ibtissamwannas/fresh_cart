@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fresh_cart/features/auth/presentation/view/login_view.dart';
 import 'package:fresh_cart/features/auth/presentation/view/sign_up_view.dart';
 import 'package:fresh_cart/features/best_selling_fruits/presentation/pages/best_selling_view.dart';
+import 'package:fresh_cart/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fresh_cart/features/home/presentation/pages/cart_view.dart';
 import 'package:fresh_cart/features/home/presentation/pages/home_view.dart';
 import 'package:fresh_cart/features/home/presentation/pages/products_view.dart';
@@ -26,6 +27,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ProductsView());
     case CartView.routeName:
       return MaterialPageRoute(builder: (context) => const CartView());
+    case CheckoutView.routeName:
+      return MaterialPageRoute(builder: (context) => const CheckoutView());
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }
