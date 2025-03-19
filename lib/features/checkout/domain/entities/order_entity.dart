@@ -5,7 +5,7 @@ class OrderInputEntity {
   final String uID;
   final CartEntity cartEntity;
   bool? payWithCash;
-  ShippingAddressEntity? shippingAddressEntity;
+  ShippingAddressEntity? shippingAddressEntity = ShippingAddressEntity();
   OrderInputEntity(
     this.cartEntity, {
     this.payWithCash,

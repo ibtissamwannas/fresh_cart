@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/address_input_section.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/checkout_steps.dart';
@@ -8,9 +9,13 @@ class CheckoutPageView extends StatelessWidget {
   const CheckoutPageView({
     super.key,
     required this.pageController,
+    required this.formKey,
+    required this.valueListenable,
   });
 
+  final GlobalKey<FormState> formKey;
   final PageController pageController;
+  final ValueListenable<AutovalidateMode> valueListenable;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,10 @@ class CheckoutPageView extends StatelessWidget {
   List<Widget> getPages() {
     return [
       const ShippingSection(),
-      const AddressInputSection(),
+      AddressInputSection(
+        formKey: formKey,
+        valueListenable: valueListenable,
+      ),
       PaymentSection(
         pageController: pageController,
       ),
