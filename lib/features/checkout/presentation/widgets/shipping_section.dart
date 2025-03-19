@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_cart/features/checkout/domain/entities/order_entity.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/shipping_item.dart';
-import 'package:provider/provider.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
@@ -15,7 +16,7 @@ class _ShippingSectionState extends State<ShippingSection>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    var orderEntity = "context.read<OrderInputEntity>()";
+    var orderEntity = context.read<OrderInputEntity>();
     return Column(
       children: [
         const SizedBox(
@@ -25,12 +26,17 @@ class _ShippingSectionState extends State<ShippingSection>
           onTap: () {
             selectedIndex = 0;
             setState(() {});
-            // orderEntity.payWithCash = true;
+            orderEntity.payWithCash = true;
           },
           isSelected: selectedIndex == 0,
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
-          price: (30).toString(),
+          price: (context
+                      .read<OrderInputEntity>()
+                      .cartEntity
+                      .calculateTotalPrice() +
+                  40)
+              .toString(),
         ),
         const SizedBox(
           height: 16,
@@ -39,12 +45,16 @@ class _ShippingSectionState extends State<ShippingSection>
           onTap: () {
             selectedIndex = 1;
             setState(() {});
-            // orderEntity.payWithCash = false;
+            orderEntity.payWithCash = false;
           },
           isSelected: selectedIndex == 1,
           title: 'الدفع اونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
-          price: "30",
+          price: context
+              .read<OrderInputEntity>()
+              .cartEntity
+              .calculateTotalPrice()
+              .toString(),
         ),
       ],
     );

@@ -16,8 +16,8 @@ class StepItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
-      firstChild: InActiveStepItem(index: index, text: text),
-      secondChild: ActiveStepItem(text: text),
+      firstChild: ActiveStepItem(text: text),
+      secondChild: InActiveStepItem(index: index, text: text),
       crossFadeState:
           isActive ? CrossFadeState.showFirst : CrossFadeState.showSecond,
       duration: const Duration(microseconds: 300),
