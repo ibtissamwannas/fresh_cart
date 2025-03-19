@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_cart/features/checkout/presentation/widgets/address_input_section.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/checkout_steps.dart';
+import 'package:fresh_cart/features/checkout/presentation/widgets/payment_section.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/shipping_section.dart';
 
 class CheckoutPageView extends StatelessWidget {
@@ -26,13 +28,14 @@ class CheckoutPageView extends StatelessWidget {
       ),
     );
   }
-}
 
-List<Widget> getPages() {
-  return [
-    const ShippingSection(),
-    const SizedBox(),
-    const SizedBox(),
-    const SizedBox()
-  ];
+  List<Widget> getPages() {
+    return [
+      const ShippingSection(),
+      const AddressInputSection(),
+      PaymentSection(
+        pageController: pageController,
+      ),
+    ];
+  }
 }

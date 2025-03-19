@@ -13,10 +13,16 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  int currentPageIndex = 0;
 
   @override
   void initState() {
     pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPageIndex = pageController.page!.toInt();
+      });
+    });
     super.initState();
   }
 
@@ -32,12 +38,51 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          const CheckoutSteps(),
+          CheckoutSteps(
+            onTap: (index) {
+              if (currentPageIndex == 0) {
+                pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn);
+              } else if (index == 1) {
+                //  (orderEntity.payWithCash != null) {
+                pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn);
+                // } else {
+                //   buildErrorBar(context, 'يرجي تحديد طريقه الدفع');
+                // }
+              } else {
+                // _handleAddressValidation();
+              }
+            },
+            currentPageIndex: currentPageIndex,
+            pageController: pageController,
+          ),
           CheckoutPageView(pageController: pageController),
-          const CustomButtonWidget(text: 'التالي'),
+          CustomButtonWidget(
+              onPressed: () {
+                pageController.animateToPage(currentPageIndex + 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn);
+              },
+              text: getNextButtonText(currentPageIndex)),
           verticalSpace(32),
         ],
       ),
     );
+  }
+
+  String getNextButtonText(int currentPageIndex) {
+    switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع عبر PayPal';
+      default:
+        return 'التالي';
+    }
   }
 }
