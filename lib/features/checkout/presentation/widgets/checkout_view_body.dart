@@ -4,6 +4,7 @@ import 'package:fresh_cart/core/helper_function/snackbars.dart';
 import 'package:fresh_cart/core/helper_function/spacing.dart';
 import 'package:fresh_cart/core/widgets/custom_button_widget.dart';
 import 'package:fresh_cart/features/checkout/domain/entities/order_entity.dart';
+import 'package:fresh_cart/features/checkout/presentation/cubit/add_order_cubit.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/checkout_steps.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/checkout_steps_page_view.dart';
 
@@ -62,7 +63,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   buildErrorBar(context, 'يرجي تحديد طريقه الدفع');
                 }
               } else {
-                // _handleAddressValidation();
+                _handleAddressValidation();
               }
             },
             currentPageIndex: currentPageIndex,
@@ -80,7 +81,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 } else if (currentPageIndex == 1) {
                   _handleAddressValidation();
                 } else {
-                  // _processPayment(context);
+                  var orderEntity = context.read<OrderInputEntity>();
+                  var addOrderCubit = context.read<AddOrderCubit>();
+                  addOrderCubit.addOrder(order: orderEntity);
                 }
               },
               text: getNextButtonText(currentPageIndex)),

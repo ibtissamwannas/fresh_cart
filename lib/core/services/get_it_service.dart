@@ -1,3 +1,5 @@
+import 'package:fresh_cart/core/repos/orders_repo/orders_repo.dart';
+import 'package:fresh_cart/core/repos/orders_repo/orders_repo_impl.dart';
 import 'package:fresh_cart/core/repos/products_repo/product_repo.dart';
 import 'package:fresh_cart/core/repos/products_repo/product_repo_impl.dart';
 import 'package:fresh_cart/core/services/data_service.dart';
@@ -23,4 +25,10 @@ void setupGetit() {
       getIt<DatabaseService>(),
     ),
   ); //type of class //class itself
+
+  getIt.registerSingleton<OrdersRepo>(
+    OrdersRepoImpl(
+      getIt<DatabaseService>(),
+    ),
+  );
 }

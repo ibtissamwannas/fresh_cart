@@ -9,7 +9,6 @@ class OrderInputEntity {
   OrderInputEntity(
     this.cartEntity, {
     this.payWithCash,
-    this.shippingAddressEntity,
     required this.uID,
   });
 

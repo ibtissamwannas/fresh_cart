@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_cart/features/checkout/domain/entities/order_entity.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
 import 'payment_item.dart';
@@ -24,7 +26,7 @@ class OrderSummryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                'جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه',
                 textAlign: TextAlign.right,
                 style: TextStyles.semiBold16,
               )
@@ -69,7 +71,7 @@ class OrderSummryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                'جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 30}جنيه',
                 style: TextStyles.bold16,
               )
             ],
