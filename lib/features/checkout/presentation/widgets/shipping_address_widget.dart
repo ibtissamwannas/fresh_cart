@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fresh_cart/core/utils/app_images.dart';
+import 'package:fresh_cart/features/checkout/domain/entities/order_entity.dart';
 import 'package:fresh_cart/features/checkout/presentation/widgets/payment_item.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
@@ -14,7 +16,6 @@ class ShippingAddressWidget extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    // log(context.read<OrderInputEntity>().toString());
     return PaymentItem(
       tile: 'عنوان التوصيل',
       child: Row(
@@ -26,7 +27,7 @@ class ShippingAddressWidget extends StatelessWidget {
             width: 8,
           ),
           Text(
-            'dd',
+            "${context.read<OrderInputEntity>().shippingAddressEntity}",
             textAlign: TextAlign.right,
             style: TextStyles.regular13.copyWith(
               color: const Color(0xFF4E5556),

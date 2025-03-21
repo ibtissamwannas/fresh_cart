@@ -52,6 +52,7 @@ dependencies:
   shared_preferences: ^2.5.2
   sign_in_with_apple: ^6.1.4
   skeletonizer: ^1.4.3
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
