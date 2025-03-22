@@ -1,0 +1,3 @@
+const kPaypalClientId = '';
+
+const kPaypalSecretKey = '';
