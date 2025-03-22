@@ -11,12 +11,25 @@ import 'package:fresh_cart/features/checkout/presentation/widgets/checkout_view_
 import 'package:fresh_cart/features/home/domain/entities/cart_entity.dart';
 import 'package:provider/provider.dart';
 
-class CheckoutView extends StatelessWidget {
+class CheckoutView extends StatefulWidget {
   const CheckoutView({super.key, required this.cartEntity});
 
   static const routeName = 'checkout';
 
   final CartEntity cartEntity;
+
+  @override
+  State<CheckoutView> createState() => _CheckoutViewState();
+}
+
+class _CheckoutViewState extends State<CheckoutView> {
+  late OrderInputEntity orderInputEntity;
+
+  @override
+  void initState() {
+    orderInputEntity = OrderInputEntity(widget.cartEntity, uID: getUser().uId);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +38,7 @@ class CheckoutView extends StatelessWidget {
       child: Scaffold(
         appBar: const CustomAppBar(title: 'الشحن'),
         body: Provider.value(
-          value: OrderInputEntity(cartEntity, uID: getUser().uId),
+          value: orderInputEntity,
           child: const AddOredrCubitBlocBuilder(child: CheckoutViewBody()),
         ),
       ),
